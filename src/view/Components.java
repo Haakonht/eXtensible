@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map.Entry;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -277,6 +278,7 @@ public class Components {
 					else menuCommand = string;
 					Application.getInstance().toggleMenu(menuCommand);
 				});
+				addButtonIcon(button, string, 25);
 				menu.add(button);
 				i++;
 			}
@@ -319,6 +321,15 @@ public class Components {
 					button.setEnabled(true);
 				}
 				enabled = true;
+			}
+		}
+		private void addButtonIcon(JButton btn, String fileName, int size) {
+			try {
+				Image img = ImageIO.read(getClass().getResource("/icons/" + fileName + ".png"));
+			    Image icon = img.getScaledInstance(size, size, Image.SCALE_DEFAULT);
+				btn.setIcon(new ImageIcon(icon));
+			} catch (Exception ex) {
+			    System.out.println(ex);
 			}
 		}
 	}
