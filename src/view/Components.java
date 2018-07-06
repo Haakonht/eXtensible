@@ -295,6 +295,7 @@ public class Components {
 					else projectCommand = string;
 					Application.getInstance().toggleProject(projectCommand);
 				});
+				addButtonIcon(button, string, 25);
 				project.add(button);
 				i++;
 			}
@@ -326,7 +327,7 @@ public class Components {
 		private void addButtonIcon(JButton btn, String fileName, int size) {
 			try {
 				Image img = ImageIO.read(getClass().getResource("/icons/" + fileName + ".png"));
-			    Image icon = img.getScaledInstance(size, size, Image.SCALE_DEFAULT);
+			    Image icon = img.getScaledInstance(size, size, Image.SCALE_SMOOTH);
 				btn.setIcon(new ImageIcon(icon));
 			} catch (Exception ex) {
 			    System.out.println(ex);
